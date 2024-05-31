@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السبيل</title>
+    <link rel="stylesheet" href="static/css/alssabil.css">
+    <link rel="stylesheet" href="static/css/all.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css.map">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" >
+</head>
+<body>
+  <!-- Start Options Page -->
+  <div class="options pt-4 pb-4" id="options">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center "  >
+          <button id="main_btn" class="mb-3" onclick="main_interface()"><img src="static/images/logo3.png" class="img-fluid w-75"></button>
+          <div class="logo-text p-3 ">
+          <h3>جمعية السبيل الخيرية</h3>
+          <h6>المحبة هي السبيل</h6>
+        </div>
+        </div>
+        
+      </div>
+    </nav>
+    <div class="list-option text-center">
+      <div class="container">
+    <ul class="list-unstyled d-flex justify-content-center mt-3 mb-3 align-items-center p-2">
+      
+      <li> <button id="op1" class="mb-3" onclick="showH6('op1')"><img src="static/images/form.png" class="img-fluid w-75"></button>
+        <h6>أيتام</h6>
+      </li>
+      <li> <button id="op2" class="mb-3" onclick="showH6('op2')"><img src="static/images/form.png" class="img-fluid w-75"></button>
+        <h6>شهداءوجرحى</h6>
+      </li>
+      <li> <button id="op3" class="mb-3" onclick="showH6('op3')"><img src="static/images/form.png" class="img-fluid w-75"></button>
+        <h6>فقر</h6>
+      </li>
+      <li> <button id="op4" class="mb-3" onclick="showH6('op4')"><img src="static/images/form.png" class="img-fluid w-75"></button>
+        <h6>مرض</h6>
+      </li>
+      <li> <button id="op5" class="mb-3" onclick="showH6('op5')"><img src="static/images/form.png" class="img-fluid w-75"></button>
+        <h6>طالب</h6>
+      </li>
+      <li> <button id="op6" class="mb-3" onclick="showH6('op6')"><img src="static/images/form.png" class="img-fluid w-75"></button>
+        <h6>حالة أخرى</h6>
+      </li>
+    </ul>
+  </div>
+  </div>
+  </div>
+    <!-- End Options Page -->
+    <script>
+        function showH6(buttonId) {
+            var status = document.getElementById(buttonId).nextElementSibling.innerHTML;
+            const url = "/status";
+
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ status })
+            };
+
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => console.log(data)).then(window.location.href = "/page3");
+        }
+        function main_interface()
+{
+  window.location.href = "/options";
+}
+    </script>
+    
+</body>

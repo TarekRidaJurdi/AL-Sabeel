@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السبيل</title>
+    <link rel="stylesheet" href="static/css/alssabil.css">
+    <link rel="stylesheet" href="static/css/all.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css.map">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" >
+</head>
+<body>
+  <!-- Start Options Page -->
+  <div class="options pt-4 pb-4" id="options">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center "  >
+          <img src="static/images/logo3.png" alt="Logo" width="90" height="90" class="d-inline-block align-text-top">
+          <div class="logo-text p-3 ">
+          <h3>جمعية السبيل الخيرية</h3>
+          <h6>المحبة هي السبيل</h6>
+        </div>
+        </div>
+        
+      </div>
+    </nav>
+    <div class="list-option text-center">
+      <div class="container">
+    <ul class="list-unstyled d-flex justify-content-center mt-3 mb-3 align-items-center p-2">
+      
+      <li> <button id="op1" class="mb-3" onclick="showH6('op1')"><img src="static/images/insert.png" class="img-fluid w-75"></button>
+        <h6>إدخال استمارة جديدة</h6>
+      </li>
+      <li> <button id="op2" class="mb-3" onclick="showH6('op2')"><img src="static/images/update.png" class="img-fluid w-75"></button>
+        <h6>تعديل أو إضافة مساعدة</h6>
+      </li>
+      <li> <button id="op3" class="mb-3" onclick="showH6('op3')"><img src="static/images/search.png" class="img-fluid w-75"></button>
+        <h6>بحث</h6>
+      </li>
+      <li> <button id="op4" class="mb-3" onclick="showH6('op4')"><img src="static/images/report.png" class="img-fluid w-75"></button>
+        <h6>تقرير</h6>
+      </li>
+    </ul>
+  </div>
+  </div>
+  </div>
+    <!-- End Options Page -->
+    <script>
+        function showH6(buttonId) {
+        var status = document.getElementById(buttonId).nextElementSibling.innerHTML;
+        
+        // Check the value of status and redirect accordingly
+        if (status === "إدخال استمارة جديدة") {
+            window.location.href = "/page2";
+        } else if (status === "تعديل أو إضافة مساعدة") {
+            window.location.href = "/page4";
+        } else if (status === "بحث") {
+            window.location.href = "/page5";
+          } else if (status === "تقرير") {
+            window.location.href = "/page6";
+        } else {
+            // Default redirection if status doesn't match any condition
+            window.location.href = "/";
+        }
+    }
+    </script>
+    
+</body>

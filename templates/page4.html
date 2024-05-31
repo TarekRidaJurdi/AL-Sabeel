@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السبيل</title>
+    <link rel="stylesheet" href="static/css/alssabil.css">
+    <link rel="stylesheet" href="static/css/all.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css.map">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" >
+</head>
+<body>
+
+<!-- Start User Inform -->
+<div class="user-inform pt-4 pb-4" id="userInform">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-brand d-flex align-items-center "  >
+        <button id="main_btn" class="mb-3" onclick="main_interface()"><img src="static/images/logo3.png" class="img-fluid w-75"></button>
+        <div class="logo-text p-3 ">
+        <h3>جمعية السبيل الخيرية</h3>
+        <h6>المحبة هي السبيل</h6>
+      </div>
+      
+      </div>
+      
+      </div>
+      
+  </nav>
+  <div class="container">
+    <div class="container mt-4">
+      <div class="row">
+          <div class="col-md-6 col-lg-2">
+              <input type="text" class="form-control" id="Family_id" placeholder="الرقم المعرف">
+          </div>
+          
+          <div class="col-auto">
+              <button class="btn btn-primary" id="show" onclick="fillForm()">أظهر بيانات السجل</button>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary" id="delete_" onclick="delete_record()" >أحذف السجل</button>
+        </div>
+      </div>
+      
+  </div>
+  <div class="form ">
+  <!-- <form  id="regForm" action="" onsubmit="return generateReport();"> -->
+  <form  id="regForm" action="">
+    <div class="tab row g-3 pb-5 ">
+      <h6>الحالة:</h6>
+      <div class="col-md-6 col-lg-2">
+        <input type="text" class="form-control" id="status" placeholder="الحالة" value="{{ status }}">
+    </div>
+      <div class="col-md-6 col-lg-3">
+      <input type="text" class="form-control" id="status_1" placeholder="معلومات إضافية عن الحالة">
+    </div>
+
+   <h6>العائلة:</h6>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="husband" placeholder="اسم الزوج" >
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="father" placeholder="الأب">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="family" placeholder="العائلة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="birthday" placeholder="تاريخ الولادة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control " id="nationalNum" placeholder="الرقم الوطني">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="job" placeholder="العمل">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="wife" placeholder="اسم الزوجة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="father-w" placeholder="الأب">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="family-w" placeholder="العائلة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="birthday-w" placeholder="تاريخ الولادة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control " id="nationalNum-w" placeholder="الرقم الوطني">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="job-w" placeholder="العمل">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-2">
+          <input type="text" class="form-control" id="child-name" placeholder="الولد">
+        </div>
+        <div class="col-md-6 col-lg-2">
+          <input type="text" class="form-control" id="birthday-child" placeholder="تاريخ الولادة">
+        </div>
+        <div class="col-md-6 col-lg-2">
+          <input type="text" class="form-control " id="study-work" placeholder=" العمل/الدراسة">
+        </div>
+        <div class="col-sm-11 col-md-5 col-lg-4">
+          <input type="text" class="form-control" id="notes" placeholder="ملاحظات">
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 text-center">
+          <button style="border: none;background: none;" type="button" onclick="addRow()"> <i class="fas fa-plus plus"></i> </button>
+        </div>
+
+      </div>
+    
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>الولد</th>
+                <th>تاريخ الولادة</th>
+                <th>العمل/الدراسة</th>
+                <th>ملاحظات</th>
+                <th>إزالة</th>
+              </tr>
+            </thead>
+            <tbody id="child-info-table">
+              <!-- هنا سيتم إضافة صفوف المعلومات -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-2">
+        <input type="text" class="form-control" id="help-value" placeholder="قيمة المساعدة">
+      </div>
+      <div class="col-md-6 col-lg-2">
+        <input type="text" class="form-control" id="help-date" placeholder="تاريخ المساعدة">
+      </div>
+      <div class="col-md-1 col-lg-1 text-center">
+        <button style="border: none;background: none;" type="button" onclick="addHelpRow()"> <i class="fas fa-plus plus"></i> </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>قيمة المساعدة</th>
+              <th>تاريخ المساعدة</th>
+              <th>حذف</th>
+            </tr>
+          </thead>
+          <tbody id="help-info-table">
+            <!-- هنا سيتم إضافة صفوف المعلومات -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h6 class="pt-3">العنوان, الإقامةوالسكن:</h6>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="state" placeholder="المحافظة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="city" placeholder="المدينة">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control " id="village" placeholder="القرية">
+    </div>
+    <div class="col-md-6 col-lg-5">
+      <input type="text" class="form-control" id="specificPoint" placeholder="نقطة علام">
+    </div>
+    <div class="form-check living-check">
+      <input class="form-check-input mt-2 text-center" type="radio" name="house" id="own" value="ملك" >
+      <label class="form-check-label form-control radio-check text-center" for="own">
+      ملك
+      </label>
+    </div>
+    <div class="form-check living-check">
+      <input class="form-check-input mt-2 text-center " type="radio" name="house" id="rent" value="إيجار" >
+      <label class="form-check-label form-control radio-check text-center" for="rent">
+       إيجار
+      </label>
+    
+    </div>
+    <div class="form-check living-check">
+      <input class="form-check-input mt-2 text-center" type="radio" name="house" id="temporary" value="مؤقت" >
+      <label class="form-check-label form-control radio-check text-center" for="temporary">
+       مؤقت
+      </label>
+    </div>
+    <div class="col-md-12 col-lg-8">
+      <input type="text" class="form-control" id="livingStatus" placeholder=" وصف مختصر عن حالة السكن">
+    </div>
+    <h6 class="pt-3">معلومات التواصل:</h6>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="basicMobile" placeholder="موبايل أساسي">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="alternativeMobile" placeholder="موبايل بديل">
+    </div>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="telephone" placeholder="هاتف ثابت">
+    </div>
+    <h6 class="pt-3"> مصدر الدخل:</h6>
+    <div class="col-md-6 col-lg-2">
+      <input type="text" class="form-control" id="income" placeholder="مصدر الدخل">
+    </div>
+    
+    <h6 class="pt-3"> الحالة الصحية:</h6>
+    <div class="col-md-6 col-lg-6 ">
+      <input type="text" class=" form-control form-control-lg p-4 mb-3" id="familyHealth" placeholder="الحالة الصحية لجميع أفراد العائلة">
+    </div>
+    <div class="col-md-6 col-lg-6 ">
+      <input type="text" class=" form-control form-control-lg p-4" id="additionalInfo" placeholder=" إضافة معلومات غير موجودة سابقا">
+      <h6 class="info-head">معلومات إضافية:</h6>
+    </div> 
+  </div>
+  <div class="tab row g-3 pb-5" style="display: block;">
+    <h6 class="pt-3">البيانات والإدخال:</h6>
+    <div class="col-md-6 col-lg-5">
+      <input type="text" class="form-control" id="statusSource" placeholder=" مصدر الحالة">
+    </div>
+    <div class="col-md-6 col-lg-5">
+      <input type="text" class="form-control" id="regDate" placeholder="  تاريخ التسجيل">
+    </div>
+    <div class="col-md-6 col-lg-5">
+      <input type="text" class="form-control" id="applicant" placeholder="  مقدم الطلب">
+    </div>
+    <div class="col-md-6 col-lg-5">
+      <input type="text" class="form-control" id="dataEntrier" placeholder="مدخل البيانات">
+    </div>
+    <div class="col-md-12 col-lg-10">
+      <input type="text" class=" form-control form-control-lg p-4 mb-3" id="applicantEvaluation" placeholder="تقييم مقدم الطلب">
+    </div>
+    <h6 class="pt-3"> تقييم الدراسات:</h6>
+    <div class="col-md-12 col-lg-10">
+      <input type="text" class=" form-control form-control-lg p-4 mb-3" id="evaluationText" placeholder="اكتب النص هنا..">
+    </div>
+    <h6 class="pt-3"> ملاحظات الإدارة:</h6>
+    <div class="col-md-12 col-lg-10">
+      <input type="text" class=" form-control form-control-lg p-4 mb-3" id="managementNotes" placeholder="اكتب النص هنا..">
+    </div>
+    <h6 class="pt-3"> رد الدراسات:</h6>
+    <div class="col-md-12 col-lg-10">
+      <select class="form-control form-control-lg p-4 mb-3" id="study_response">
+        <option value="غير محدد" selected>غير محدد</option>
+        <option value="مقبول">مقبول</option>
+        <option value="مرفوض">مرفوض</option>
+      </select>
+    </div>
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    
+    <button class="btn " id="checkBtn" onclick="check_form()" type="button">تحقق</button>
+    <button style="display: none;" class="btn " id="saveBtn" onclick="update_data()" type="button">تعديل</button>
+  </div>
+  
+  </form>
+</div>
+</div>
+  
+</div>
+
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+  <script src="static/js/all.min.js"></script>
+  <script src="static/js/alssabil.js"></script> 
+  <script>
+   function addRow() {
+    var name = document.getElementById("child-name").value;
+    var birthday = document.getElementById("birthday-child").value;
+    var study = document.getElementById("study-work").value;
+    var notes = document.getElementById("notes").value;
+
+    var table = document.getElementById("child-info-table");
+    var newRow = table.insertRow(table.rows.length);
+    
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+    var cell5 = newRow.insertCell(4);
+
+    cell1.innerHTML = name;
+    cell2.innerHTML = birthday;
+    cell3.innerHTML = study;
+    cell4.innerHTML = notes;
+    cell5.innerHTML = '<button onclick="deleteThisRow(this)">حذف</button>';
+    // Clear input fields after adding child info
+    document.getElementById('child-name').value = '_';
+    document.getElementById('birthday-child').value = '_';
+    document.getElementById('study-work').value = '_';
+    document.getElementById('notes').value = '_';
+}
+
+function deleteThisRow(button) {
+    var confirmation = prompt("للتأكيد، الرجاء كتابة كلمة 'delete'");
+    
+    if (confirmation === "delete") {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    } else {
+        alert("لم يتم حذف الصف.");
+        event.preventDefault(); 
+    }
+    
+    
+}
+
+function deleteRow() {
+    var table = document.getElementById("child-info-table");
+    if(table.rows.length > 0) {
+        table.deleteRow(table.rows.length - 1);
+    } else {
+        alert("لا توجد صفوف لحذفها!");
+    }
+}
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // التقاط جميع الراديو buttons
+    var radioButtons = document.querySelectorAll('input[type="radio"][name="house"]');
+
+    // إضافة استماع الحدث لكل radio button
+    radioButtons.forEach(function(radioButton) {
+      radioButton.addEventListener('change', function() {
+    if (this.checked) {
+        var selectedValue = this.value;
+        console.log("Selected radio value:", selectedValue);
+    }
+});
+
+    });
+});
+function addHelpRow() {
+  var helpValue = document.getElementById("help-value").value;
+  var helpDate = document.getElementById("help-date").value;
+
+  var table = document.getElementById("help-info-table");
+  var newRow = table.insertRow(table.rows.length);
+  
+  var cell1 = newRow.insertCell(0);
+  var cell2 = newRow.insertCell(1);
+  var cell3 = newRow.insertCell(2);
+
+  cell1.innerHTML = helpValue;
+  cell2.innerHTML = helpDate;
+  cell3.innerHTML = '<button onclick="deleteHelpRow(this)">حذف</button>';
+
+  // Clear input fields after adding help info
+  document.getElementById('help-value').value = '_';
+  document.getElementById('help-date').value = '_';
+}
+function deleteHelpRow(button) {
+    var confirmation = prompt("للتأكيد، الرجاء كتابة كلمة 'delete'");
+    
+    if (confirmation === "delete") {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    } else {
+        alert("لم يتم حذف الصف.");
+        event.preventDefault(); 
+    }
+    
+}
+
+
+function update_data() {
+    const inputs = document.querySelectorAll('#regForm input');
+
+    
+    // Create an empty object to store form data
+    const formData = {};
+
+    // Loop through each input element and add its id and value to the formData object
+    inputs.forEach(input => {
+        formData[input.id] = input.value; });
+    // Get table rows
+    const tableRows = document.querySelectorAll('#child-info-table tr');
+     
+    // Create an empty array to store table data
+    const tableData = [];
+
+    // Loop through each table row
+    tableRows.forEach(row => {
+        // Get all cells in the row
+        const cells = row.querySelectorAll('td');
+
+        // Create an object to store cell data
+        const rowData = {};
+
+        // Loop through each cell and add its text content to the rowData object
+        cells.forEach((cell, index) => {
+            rowData[`child-${index + 1}`] = cell.textContent.trim();
+        });
+
+        // Push the rowData object to the tableData array
+        tableData.push(rowData);
+    });
+     // Get table rows
+     const tableRows1 = document.querySelectorAll('#help-info-table tr');
+
+   // Create an empty array to store table data
+   const tableData1 = [];
+
+    // Loop through each table row
+    tableRows1.forEach(row => {
+        // Get all cells in the row
+        const cells = row.querySelectorAll('td');
+
+        // Create an object to store cell data
+        const rowData = {};
+
+        // Loop through each cell and add its text content to the rowData object
+        cells.forEach((cell, index) => {
+            rowData[`help-${index + 1}`] = cell.textContent.trim();
+        });
+
+        // Push the rowData object to the tableData array
+        tableData1.push(rowData);
+    });
+    var record_id = document.getElementById("Family_id").value
+    const selectedHouseValue = document.querySelector('input[name="house"]:checked')?.value;
+    var studyResponseSelect = document.getElementById("study_response");
+    formData.study_response=studyResponseSelect.value;
+    formData['house']=selectedHouseValue;
+    formData['Family_id']=record_id;
+    // Add the tableData array to the formData object
+    formData.childInfo = tableData;
+    // Add the tableData array to the formData object
+    formData.helpInfo = tableData1;
+    const url = "/update_data";
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ formData })
+    };
+
+    fetch(url, options)
+        .then(response => response.json())
+        .then(data => console.log(data)).then(window.location.href = "/options");
+}
+
+function check_form() {
+    // Get all input elements within the form
+    const inputs = document.querySelectorAll('#regForm input');
+
+    // Create an empty object to store form data
+    const formData = {};
+
+    // Create an array to store missing values
+    const missingValues = [];
+
+    // Loop through each input element and add its id and value to the formData object
+    inputs.forEach(input => {
+        if (input.value.trim() !== '') {
+            formData[input.id] = input.value;
+        } else {
+            missingValues.push(input.placeholder);
+        }
+    });
+
+    const saveBtn = document.getElementById('saveBtn');
+    // Check for missing values
+    if (missingValues.length > 0) {
+        alert('Missing Values:\n' + missingValues.join('\n'));
+        
+    }
+    else {
+      saveBtn.style.display = 'block'; // Show the "تحقق" button;
+    }
+
+}
+function main_interface()
+{
+  window.location.href = "/options";
+}
+function fillForm(){
+      // احصل على عنصر tbody
+      var tbody = document.getElementById("child-info-table");
+
+      // حذف كل الأسطر في الجدول
+      tbody.innerHTML = "";
+// احصل على عنصر tbody
+var tbody = document.getElementById("help-info-table");
+
+// حذف كل الأسطر في الجدول
+tbody.innerHTML = "";
+
+  const Family_id=document.getElementById('Family_id').value;
+  const url = "/show_data_to_update?family_id=" + Family_id;
+
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Family information
+        document.getElementById('status').value =data['family']['status'];
+        document.getElementById('status_1').value =data['family']['status_1'];
+        document.getElementById('husband').value =data['family']['husband'];
+        document.getElementById('father').value = data['family']['father'];
+        document.getElementById('family').value = data['family']['family'];
+        document.getElementById('birthday').value = data['family']['birthday'];
+        document.getElementById('nationalNum').value = data['family']['nationalNum'];
+        document.getElementById('job').value = data['family']['job'];
+        document.getElementById('wife').value = data['family']['wife'];
+        document.getElementById('father-w').value = data['family']['father-w'];
+        document.getElementById('family-w').value = data['family']['family-w'];
+        document.getElementById('birthday-w').value = data['family']['birthday-w'];
+        document.getElementById('nationalNum-w').value = data['family']['nationalNum-w'];
+        document.getElementById('job-w').value = data['family']['job-w'];
+        document.getElementById('child-name').value = '_';
+        document.getElementById('birthday-child').value = '_';
+        document.getElementById('study-work').value = '_';
+        document.getElementById('notes').value = '_';
+        document.getElementById('help-value').value = '_';
+        document.getElementById('help-date').value = '_';
+        // Address information
+    document.getElementById('state').value = data['family']['state'];
+    document.getElementById('city').value = data['family']['city'];
+    document.getElementById('village').value = data['family']['village'];
+    document.getElementById('specificPoint').value = data['family']['specificPoint'];
+    document.getElementById('own').checked = true;
+    document.getElementById('livingStatus').value = data['family']['livingStatus'];
+    
+    // Contact information
+    document.getElementById('basicMobile').value = data['family']['basicMobile'];
+    document.getElementById('alternativeMobile').value = data['family']['alternativeMobile'];
+    document.getElementById('telephone').value = data['family']['telephone'];
+    
+    // Health information
+    document.getElementById('familyHealth').value = data['family']['familyHealth'];
+    document.getElementById('additionalInfo').value = data['family']['additionalInfo'];
+    
+    // Data and input information
+    document.getElementById('statusSource').value = data['family']['statusSource'];
+    document.getElementById('regDate').value = data['family']['regDate'];
+    document.getElementById('applicant').value = data['family']['applicant'];
+    document.getElementById('dataEntrier').value = data['family']['dataEntrier'];
+    document.getElementById('applicantEvaluation').value = data['family']['applicantEvaluation'];
+    document.getElementById('evaluationText').value = data['family']['evaluationText'];
+    document.getElementById('managementNotes').value = data['family']['managementNotes'];
+    document.getElementById('study_response').value = data['family']['study_response'];
+        // حلقة فور تمر على كل عنصر في temp
+        for (var i = 0; i < data['childs'].length; i++) {
+            // Child information
+            document.getElementById('child-name').value = data['childs'][i]['child-name'];
+            document.getElementById('birthday-child').value = data['childs'][i]['birthday-child'];
+            document.getElementById('study-work').value = data['childs'][i]['study-work'];
+            document.getElementById('notes').value = data['childs'][i]['notes'];
+            addRow();
+            // على سبيل المثال، نقوم بطباعة كل عنصر
+        }
+        // حلقة فور تمر على كل عنصر في temp
+        for (var i = 0; i < data['helps'].length; i++) {
+            // Help information
+          document.getElementById('help-value').value = data['helps'][i]['help-value'];
+          document.getElementById('help-date').value = data['helps'][i]['help-date'];
+          addHelpRow();      
+            // على سبيل المثال، نقوم بطباعة كل عنصر
+        }
+        
+        
+        // يمكنك إضافة أي رمز تحتاجه هنا للانتقال إلى صفحة جديدة بعد استلام البيانات
+        //window.location.href = "/page2";
+    })
+    .catch(error => {
+        // في حال حدوث خطأ أثناء الطلب
+        console.error('Error fetching data:', error);
+    });
+}
+function delete_record() {
+  // الحصول على قيمة مدخل كلمة المرور
+  const password = prompt("الرجاء إدخال كلمة المرور:");
+
+  // التحقق من صحة كلمة المرور
+  if (password === "Alsabeel_D_0") {
+    // إذا كانت كلمة المرور صحيحة، استمر في عملية الحذف
+    const Family_id = document.getElementById('Family_id').value;
+    const url = "/delete_record?family_id=" + Family_id;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log('تم حذف السجل بنجاح');
+        // هنا يمكنك إجراء أي إجراءات إضافية بعد حذف السجل بنجاح.
+      })
+      .catch(error => {
+        console.error('خطأ في حذف السجل:', error);
+        // هنا يمكنك التعامل مع أي أخطاء قد تحدث أثناء عملية الحذف.
+      });
+  } else {
+    // إذا كانت كلمة المرور غير صحيحة، أظهر رسالة بذلك
+    alert("كلمة المرور خاطئة، لا يمكن الحذف.");
+  }
+}
+
+   </script> 
+</body>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السبيل</title>
+    <link rel="stylesheet" href="static/css/alssabil.css">
+    <link rel="stylesheet" href="static/css/all.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css.map">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap" >
+    <style>
+        .table-responsive {
+            max-height: 300px; /* تحديد الارتفاع الأقصى للجدول */
+            overflow-y: auto; /* تمكين التمرير العمودي */
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Start Table Page -->
+  <div class="table-page pt-4">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center "  >
+          <button id="main_btn" class="mb-3" onclick="main_interface()"><img src="static/images/logo3.png" class="img-fluid w-75"></button>
+          <div class="logo-text p-3 ">
+          <h3>جمعية السبيل الخيرية</h3>
+          <h6>المحبة هي السبيل</h6>
+        </div>
+        </div>
+        <div class="gap-2 d-md-flex justify-content-center">
+        
+      </div>
+        </div>
+    </nav>
+    
+    <button class="btn" id="filterButton" type="button" style="margin:1px; margin-left:50%;"><i class="fa-solid fa-filter circle"></i>
+      <h5 class="fs-6  fw-light ">فلترة</h5></button>
+    <div class="search pt-4 pb-4" id="searchForm" style="display: none;">
+      <div class="container">
+        <div class="search-container">
+          
+          <form action="" id="formSearch" class="d-grid gap-2 d-md-flex justify-content-center flex-column">
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center">
+                <h6 class="search-head">البحث بإسم الزوج :</h6>
+                <input type="text" class="form-control search-input" id="husbandFname" placeholder="الأول">
+                <input type="text" class="form-control search-input" id="husbandMname" placeholder="الأوسط">
+                <input type="text" class="form-control search-input" id="husbandLname" placeholder="الكنية">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+                <h6 class="search-head">البحث بإسم الزوجة :</h6>
+                <input type="text" class="form-control search-input" id="wifeFname" placeholder="الأول">
+                <input type="text" class="form-control search-input" id="wifeMname" placeholder="الأوسط">
+                <input type="text" class="form-control search-input" id="wifeLname" placeholder="الكنية">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+                <h6 class="search-head">بحث بمعلومات الموقع:</h6>
+                <input type="text" class="form-control search-input" id="province" placeholder="المحافظة">
+                <input type="text" class="form-control search-input" id="city" placeholder="المدينة">
+                <input type="text" class="form-control search-input" id="village" placeholder="القرية">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+                <h6 class="search-head child-head" id="childHead1">البحث بالرقم الوطني: </h6>
+                <input type="text" class="form-control search-input child-name " id="nationalNumSearch" placeholder="الرقم الوطني">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+                <h6 class="search-head child-head" id="childHead2">البحث برقم الهاتف : </h6>
+                <input type="text" class="form-control search-input child-name " id="phoneNum" placeholder="رقم الهاتف">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+              <h6 class="search-head child-head" id="childHead2">الحالة : </h6>
+              <input type="text" class="form-control search-input child-name " id="status_" placeholder="الحالة">
+          </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+              <h6 class="search-head child-head" id="childHead2">البحث بمعلومات اضافية عن الحالة : </h6>
+              <input type="text" class="form-control search-input child-name " id="status_plus" placeholder="معلومات اضافية عن الحالة">
+          </div>
+          <div class="d-grid gap-2 d-md-flex justify-content-center align-items-center pt-2">
+            <h6 class="search-head child-head" id="childHead2">الرقم المعرف : </h6>
+            <input type="text" class="form-control search-input child-name " id="id_" placeholder="الرقم المعرف">
+        </div>
+            <div class="d-grid gap-5 d-md-flex justify-content-center buttons-report">
+                <button class="btn text-center me-md-2" id="searchButton" onclick="" type="button">بحث</button>
+            </div>
+        </form>
+        
+        
+      </div>
+    </div>
+      
+    </div>
+    
+<div class="table-container">
+<ul class="d-flex justify-content-center pt-5">
+  <li data-class="الكل" class="active " >الكل</li>
+  <li data-class="أيتام">الأيتام</li>
+  <li data-class="شهداءوجرحى">الشهداءوالجرحى</li>
+  <li data-class="مرض">المرض</li>
+  <li data-class="فقر">الفقر</li>
+  <li data-class="طالب">طالب</li>
+  <li data-class="حالة أخرى">حالة أخرى</li>
+  </ul>
+    <div class="table-responsive">
+      <table class="table table-bordered " id="table">
+      <thead>
+        <tr>
+         <th>المعرف</th> 
+         <th>اسم المستفيد</th> 
+         <th>القسم</th> 
+         <th>رقم الهاتف</th> 
+         <th>العنوان</th> 
+         <th>تاريخ التسجيل</th> 
+         <th>تاريخ المساعدة</th> 
+         <th>رد الدراسات</th> 
+        </tr>
+      </thead>
+      <tbody>
+       
+      </tbody>
+      </table>
+    
+  </div>
+</div>
+    <div class="border"></div>
+  </div>
+  
+  <!-- End Table Page -->
+</div>
+
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+  <script src="static/js/all.min.js"></script>
+  <script src="static/js/alssabil.js"></script> 
+  <script>
+   
+function main_interface()
+{
+  window.location.href = "/options";
+}
+
+ // Active Head Table
+
+ document.querySelectorAll(".table-page ul li").forEach(li => {
+
+li.addEventListener("click", (element) =>
+{   
+    element.target.parentElement.querySelectorAll(".active").forEach(event => {
+        // Remove active class 
+        event.classList.remove("active")
+       });
+       //Add classlist to target element li
+       element.target.classList.add("active");
+
+   });
+});
+function fillTable(data) {
+    const tableBody = document.querySelector("tbody");
+    alert('عدد السجلات: '+data['length']);
+    // تحديث بيانات الجدول بناءً على البيانات المستلمة
+    tableBody.innerHTML = ""; // Clear existing table rows
+    data['records'].forEach(record => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${record[0]}</td>
+            <td>${record[1]+' '+record[2]}</td>
+            <td>${record[3]}</td>
+            <td>${record[4]}</td>
+            <td>${record[5]+'-'+record[6]+'-'+record[7]+'-'+record[8]}</td>
+            <td>${record[9]}</td>
+            <td>${record[10]}</td>
+            <td>${record[11]}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+function showdata() {
+    const url = "/show_data_latest_help";
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            fillTable(data); // تعبئة الجدول بالبيانات المسترجعة
+        })
+        .catch(error => {
+            // في حالة حدوث خطأ أثناء الطلب
+            console.error('Error fetching data:', error);
+        });
+}
+
+// استدعاء التابع عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", function() {
+    showdata();
+});
+function showValue(tap) {
+  var filters = {'status': tap};
+  const url = "/show_data_latest_help_filter";
+
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({filters })
+            };
+
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+            fillTable(data); // تعبئة الجدول بالبيانات المسترجعة
+        })
+        .catch(error => {
+            // في حالة حدوث خطأ أثناء الطلب
+            console.error('Error fetching data:', error);
+        });
+        }
+
+
+
+document.querySelectorAll('.table-container li').forEach(item => {
+  item.addEventListener('click', function() {
+    var tap = this.getAttribute('data-class');
+    showValue(tap);
+  });
+});
+document.getElementById('filterButton').addEventListener('click', function() {
+    var formSearch = document.getElementById('searchForm');
+    if (formSearch.style.display === 'none') {
+      formSearch.style.display = 'block';
+    } else {
+      formSearch.style.display = 'none';
+    }
+  });
+  document.getElementById("searchButton").addEventListener("click", function() {
+        var status;
+if (document.getElementById("status_").value.length > 2) {
+  status = document.getElementById("status_").value;
+} else {
+    status = document.querySelectorAll('.table-container li.active')[0].getAttribute('data-class');
+    
+}
+        var husbandFname = document.getElementById("husbandFname").value;
+        var family_id = document.getElementById("id_").value;
+        var husbandMname = document.getElementById("husbandMname").value;
+        var husbandLname = document.getElementById("husbandLname").value;
+        var wifeFname = document.getElementById("wifeFname").value;
+        var wifeMname = document.getElementById("wifeMname").value;
+        var wifeLname = document.getElementById("wifeLname").value;
+        var province = document.getElementById("province").value;
+        var city = document.getElementById("city").value;
+        var village = document.getElementById("village").value;
+        var nationalNumSearch = document.getElementById("nationalNumSearch").value;
+        var phoneNum = document.getElementById("phoneNum").value;
+        var status_plus = document.getElementById("status_plus").value;
+        let filters = {
+    "family_id":family_id,
+    "husband": husbandFname,
+    "father": husbandMname,
+    "family": husbandLname,
+    "wife": wifeFname,
+    "father_w": wifeMname,
+    "family_w": wifeLname,
+    "state": province,
+    "city": city,
+    "village": village,
+    "national_num": nationalNumSearch,
+    "basic_mobile": phoneNum,
+    "status": status,
+    "status_1": status_plus
+};
+const url = "/show_data_latest_help_filter";
+
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({filters })
+            };
+
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+            fillTable(data); // تعبئة الجدول بالبيانات المسترجعة
+        })
+        .catch(error => {
+            // في حالة حدوث خطأ أثناء الطلب
+            console.error('Error fetching data:', error);
+        });
+        
+
+
+        
+    });
+   </script> 
+</body>
+</html>

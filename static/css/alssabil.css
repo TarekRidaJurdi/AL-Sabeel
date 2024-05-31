@@ -1,0 +1,501 @@
+:root {
+    --first-color: #06AED5;
+    --second-color: #DD1C1A;
+    --third-color: #dfdddd85;
+}
+
+body {
+
+    font-family: 'Tajawal', sans-serif;
+}
+
+
+/*Start Main Components */
+.navbar .logo-text {
+    color: #666;
+
+}
+
+.navbar .logo-text h3 {
+    font-weight: 300;
+}
+
+.navbar .logo-text h6 {
+    opacity: .7;
+    font-weight: 300;
+}
+
+.navbar .back-btn {
+    color: var(--first-color);
+    font-size: 50px;
+
+}
+
+.navbar button {
+    border: none;
+    background: none;
+
+}
+
+/*End Main Components */
+
+/* Start Landing page */
+.landing {
+    background: radial-gradient(circle, #fff 10%, #dfdddd85 90%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.landing input {
+    border-radius: 20px;
+    border: 2px solid #666;
+    width: 300px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.landing input::placeholder {
+    opacity: .5;
+    font-size: 14px
+}
+
+.landing input:hover,
+.landing input:focus {
+    border-color: black;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+
+.landing .border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+/* End Landing page */
+/* Start options Pgae */
+.options {
+    background: radial-gradient(circle, #fff 10%, #dfdddd85 90%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.options .list-option {
+    padding-top: 75px;
+    padding-bottom: 150px;
+}
+
+.options button {
+    border: none;
+    background: none;
+}
+
+.options .border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+/* End options Pgae */
+/* Start User Inform */
+.user-inform {
+    background: radial-gradient(circle, #fff 10%, #dfdddd85 90%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.user-inform .tab {
+    display: none;
+}
+
+.user-inform .border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+.user-inform .form {
+    padding-top: 50px;
+}
+
+.user-inform h6 {
+    padding-right: 20px;
+    margin-bottom: -10px;
+}
+
+.user-inform input {
+    border-radius: 10px;
+    border: 2px solid #666;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Mark input boxes that gets an error on validation: */
+.user-inform input.invalid,
+.user-inform .form-check-input.invalid,
+.user-inform input[type="checkbox"].invalid {
+    background-color: #857d7d4a;
+}
+
+.user-inform input::placeholder {
+    color: #666666a1;
+    font-size: 14px;
+}
+
+.user-inform input:hover,
+.user-inform input:focus {
+    border-color: black;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.user-inform .plus {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--first-color);
+    text-align: center;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.user-inform .living-check {
+    width: 95px;
+}
+
+.user-inform .living-check .radio-check {
+    color: #666666a1;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid #666;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: var(--first-color) !important;
+    border-color: var(--first-color) !important;
+}
+
+.user-inform .info-head {
+    position: relative;
+    top: -108px;
+}
+
+.user-inform .label-filter {
+    color: #666666a1;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid #666;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-left: 10px;
+    cursor: pointer;
+    width: 95px;
+    position: relative;
+}
+
+.btn-check.checkbox-f:checked+.form-control.label-filter {
+    background-color: var(--first-color) !important;
+    color: #fff;
+}
+
+.form-control.label-filter .close-button {
+    position: absolute;
+    left: 5px;
+    bottom: 8px;
+    cursor: pointer;
+    text-align: center;
+    display: none;
+}
+
+.user-inform .btn,
+.user-inform .btn:hover {
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    color: #fff;
+    width: 120px;
+    border-radius: 20px;
+    font-size: 19px;
+    padding: 4px 10px;
+}
+
+.user-inform .btn:focus {
+    box-shadow: none;
+
+}
+
+.user-inform .bullets {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.user-inform .bullets .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--first-color);
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+/* Mark the active step: */
+.user-inform .bullets .step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+.user-inform .bullets .step.finish {
+    background-color: var(--first-color);
+}
+
+/* End User Inform */
+/* Start Form Report */
+.form-report {
+    background: radial-gradient(circle, #fff 10%, #dfdddd85 90%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.form-report .border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+.form-report .label-style {
+    padding: 5px;
+    border: 1px solid #c0c7cd;
+    width: 230px;
+    font-size: 18px;
+    height: 35px;
+    font-weight: 400;
+}
+
+.form-report .btn,
+.form-report .btn:hover {
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    color: #fff;
+    display: none;
+    width: 145px;
+    border-radius: 20px;
+    font-size: 19px;
+    padding: 4px 10px;
+
+}
+
+.form-report .btn:focus {
+    box-shadow: none;
+
+}
+
+/* End Form Report */
+/* Start Search Page */
+.search {
+    background: radial-gradient(circle, #fff 10%, #dfdddd85 90%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.search .border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+.search .search-container {
+    padding-top: 50px;
+}
+
+.search .search-head {
+    margin-left: 10px;
+    text-align: center;
+    line-height: 2;
+}
+
+.search .search-input {
+    background-color: #c0c7cd3d;
+    border: 1px solid #a9b1b8;
+    width: 145px;
+    border-radius: 20px;
+    font-size: 19px;
+    padding: 4px 10px;
+    text-align: center;
+}
+
+.search input::placeholder {
+    color: #a9b1b8;
+}
+
+.search input:hover,
+.search input:focus {
+    border-color: black;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.search .child-name {
+    width: 460px;
+    text-align: right;
+    background-color: #c0c7cd3d;
+    border: 1px solid #a9b1b8;
+    border-radius: 20px;
+    font-size: 19px;
+    padding: 4px 10px;
+}
+
+.search .child-head {
+    margin-left: 35px;
+    text-align: center;
+    line-height: 2;
+}
+
+#childHead1 {
+    margin-left: -3px;
+}
+
+#childHead2 {
+    margin-left: 10px;
+}
+
+@media (max-width:768px) {
+    .search .search-input {
+        width: 100%;
+    }
+
+    .search .child-name {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.search .btn,
+.search .btn:hover {
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    color: #fff;
+    width: 145px;
+    border-radius: 20px;
+    font-size: 19px;
+    padding: 4px 10px;
+    margin-top: 70px;
+    margin-bottom: 150px;
+
+}
+
+.search .btn:focus {
+    box-shadow: none;
+
+}
+
+
+/* End Search Page */
+/* Start Table Page */
+.table-page {
+    background: radial-gradient(circle, #fff 10%, #dfdddd85 90%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.table-page .border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+.table-page .navbar .circle {
+    background-color: var(--first-color);
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+
+.table-page ul {
+    margin: 0;
+    position: relative;
+    list-style: none;
+}
+
+.table-page ul .active {
+    background-color: #c0baba2b;
+}
+
+.table-page ul li {
+    padding: 1.4rem 0rem;
+    cursor: pointer;
+    background-color: #6666669e;
+    color: black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 170px;
+    text-align: center;
+    margin-left: 1px;
+}
+
+@media (max-width:768px) {
+    .table-page ul li {
+        padding: 0.5rem 0rem;
+        font-size: 16px;
+    }
+}
+
+
+.table-page table {
+    border-collapse: separate;
+    border-spacing: 5px;
+    background-color: #c0baba2b;
+    padding: 20px;
+}
+
+@media (max-width:768px) {
+    .table-page table {
+        padding: 0px;
+    }
+}
+
+.table-page table thead th {
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #a9b1b8;
+    border-radius: 5px;
+    background-color: #ffffff94;
+}
+
+#table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #a9b1b8;
+}
+
+#table>thead {
+    vertical-align: middle;
+}
+
+.table-page table td {
+    padding: 15px;
+    color: black;
+    border-radius: 5px;
+    border: 1px solid #a9b1b8;
+    background-color: #ffffff94;
+}
+
+
+/* End Table Page */
